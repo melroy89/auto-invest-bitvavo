@@ -3,6 +3,8 @@ run-auto-invest:
     - schedules
   tags:
     - shell
+  before_script:
+    - python3 -m pip install -r requirements.txt
   script:
     # Trigger buy
     - python3 ./main.py
