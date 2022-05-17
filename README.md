@@ -1,6 +1,6 @@
 # Auto-Invest Bitvavo
 
-Bitvavo Auto-invest (DCA) tool. Private project!
+Bitvavo Auto-invest (DCA) tool.
 
 ## Virtual Python Env
 
