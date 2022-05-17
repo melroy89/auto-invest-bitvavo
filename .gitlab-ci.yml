@@ -1,0 +1,7 @@
+
+run-auto-invest:
+ only:
+   - schedules
+ script:
+  # Trigger buy
+   - python3 ./main.py
