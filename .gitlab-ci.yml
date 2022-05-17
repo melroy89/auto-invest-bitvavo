@@ -1,11 +1,8 @@
-
 run-auto-invest:
- only:
-   - schedules
- tags:
+  only:
+    - schedules
+  tags:
     - shell
- script:
-  # Trigger buy
-  # - python3 ./main.py
-    - python3 -c 'print("yes")'
-
+  script:
+    # Trigger buy
+    - python3 ./main.py
