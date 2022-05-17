@@ -31,9 +31,13 @@ Before you can start the script. You need to [create an API key at Bitvavo](http
 - `API_KEY`: Bitvavi API key
 - `API_SECRET`: Bitvavi API secret
 
-Start a single buy trade by executing: `./main.py`
+Start a single buy trade by executing manually: `./main.py`
 
+Of course you can add a cronjob using cron under Linux (example: `crontab -e`) *or* use GitLab Scheduling Pipelines features (see below).
 
 ### Cronjob
 
-This project uses [GitLab Scheduling Pipelines](https://docs.gitlab.com/ee/ci/pipelines/schedules.html) to execute the script in intervals (cronjob) on your request.
+This project uses [GitLab Scheduling Pipelines](https://docs.gitlab.com/ee/ci/pipelines/schedules.html) to execute the script in intervals (cronjob) on your request.  
+See the [.gitlab-ci.yml](.gitlab-ci.yml) file, which is getting executed using scheduling.
+
+The secrets are passed as environment variables in GitLab pipelines.
