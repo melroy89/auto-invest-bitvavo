@@ -2,16 +2,20 @@
 from python_bitvavo_api.bitvavo import Bitvavo
 import os
 import sys
+
+# Settings
+MIN_AVAILABLE_EURO = 10.0 # Min amount of euro balance in order to proceed futher
+BUY_AMOUNT_EURO = 5.0 # How much do you want to buy in euros (market order)?
+ORDER_MARKET_PAIR = 'BTC-EUR' # What trading pair to buy (Bitcoin/euro is the default), full list of markets: https://api.bitvavo.com/v2/markets
+ORDER_SIDE = 'buy' # Buy or sell?
+ORDER_TYPE = 'market' # Order type: market (= current best price)
+
 if 'API_KEY' not in os.environ:
   print('ERROR: Missing \'API_KEY\' environment variable. Exit')
   sys.exit(1)
 if 'API_SECRET' not in os.environ:
   print('ERROR: Missing \'API_SECRET\' environment variable. Exit')
   sys.exit(1)
-
-# Settings
-MIN_AVAILABLE_EURO = 10.0 # Min amount of euro balance in order to proceed futher
-BUY_AMOUNT_EURO = 5.0 # How much do you want to buy (market order)?
 
 # Setup connection
 bitvavo = Bitvavo({
@@ -24,7 +28,7 @@ def placeMarketOrder():
   global bitvavo
   print('INFO: Place BTC buy trade')
   # Buy BTC-EUR at market price based on quote currency (=euro)
-  response = bitvavo.placeOrder('BTC-EUR', 'buy', 'market', { 'amountQuote': str(BUY_AMOUNT_EURO) })
+  response = bitvavo.placeOrder(ORDER_MARKET_PAIR, ORDER_SIDE, ORDER_TYPE, { 'amountQuote': str(BUY_AMOUNT_EURO) })
   # Order successfully placed?
   if 'orderId' in response:
     print('INFO: Order is successfully placed!')

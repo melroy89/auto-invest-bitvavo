@@ -35,6 +35,18 @@ Start a single buy trade by executing manually: `./main.py`
 
 Of course you can add a cronjob using cron under Linux (example: `crontab -e`) *or* use GitLab Scheduling Pipelines features (see below).
 
+### Configure
+
+If you want, change the settings variable at the top of [main.py](main.py) to your needs. Current settings:
+
+- `MIN_AVAILABLE_EURO`: The minimal available amount in euros before executing any order
+- `BUY_AMOUNT_EURO`: The amount you want to buy in euros of provided market pair (see next setting)
+- `ORDER_MARKET_PAIR`: The market pair you want to buy (or sell) automatically (default: `BTC-EUR`, see also [full list of market pairs](https://api.bitvavo.com/v2/markets))
+- `ORDER_SIDE`: Do we want to buy or sell (default: `buy`)
+- `ORDER_TYPE`: Order type (default: `market`).
+
+* [See the full list of market pairs](https://api.bitvavo.com/v2/markets), for example: `BTC-EUR`, `ETH-EUR` or `ADA-EUR`.
+
 ### Cronjob
 
 This project uses [GitLab Scheduling Pipelines](https://docs.gitlab.com/ee/ci/pipelines/schedules.html) to execute the script in intervals (cronjob) on your request.  
