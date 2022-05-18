@@ -93,4 +93,4 @@ if __name__ == "__main__":
 
   # Display rate limit info, in all cases
   limit = bitvavo.getRemainingLimit()
-  print('INFO: Remaining rate limit calls for this minute: ' + str(limit))
+  print('DEBUG: Remaining rate limit calls for this minute: ' + str(limit))

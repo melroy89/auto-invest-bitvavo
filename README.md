@@ -1,6 +1,15 @@
-# Auto-Invest Bitvavo
+# Auto-invest Bitvavo tool (DCA)
 
-Bitvavo Auto-invest (DCA) tool.
+Bitvavo auto invest **D**ollar-**C**ost **A**veraging (DCA) Python script.
+
+## Features
+
+- Providing orders in euro amount (ideal for DCA'ing)
+- (Optional) Euro amount availability check before placing orders
+- Support buy/sell market order
+- Support buy/sell limit order with user predefined limit price
+- Support buy/sell limit orded based on percentage of current market price (eg. limit price = 30.000 BTC * 0.999%)
+- Easily adjust your settings to your needs, settings are at the top of [the script](main.py)
 
 ## Virtual Python Env
 
@@ -33,7 +42,7 @@ Before you can start the script. You need to [create an API key at Bitvavo](http
 
 Start a single buy trade by executing manually: `./main.py`
 
-Of course you can add a cronjob using cron under Linux (example: `crontab -e`) *or* use GitLab Scheduling Pipelines features (see below).
+Of course you can add a cronjob using cron under Linux (example: `crontab -e`) *or* use GitLab Scheduling Pipelines features ([see below](#cronjob)).
 
 ### Configure
 
