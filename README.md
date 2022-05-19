@@ -42,7 +42,7 @@ Before you can start the script. You need to [create an API key at Bitvavo](http
 
 Start a single buy trade by executing manually: `./main.py`
 
-Of course you can add a cronjob using cron under Linux (example: `crontab -e`) *or* use GitLab Scheduling Pipelines features ([see below](#cronjob)).
+[See Cronjob section](#cronjob) below how you can configure a cronjob out of this.
 
 ### Configure
 
@@ -61,7 +61,27 @@ If you want, change the settings variable at the top of [main.py](main.py) to yo
 
 ### Cronjob
 
-This project uses [GitLab Scheduling Pipelines](https://docs.gitlab.com/ee/ci/pipelines/schedules.html) to execute the script in intervals (cronjob) on your request.  
+You can choice how you want to trigger this script! Built-in Linux Crontab? Using GitLab Pipelines or GitHub Actions?
+
+**Linux Crontab**
+
+Of course you can add a cronjob using cron under GNU/Linux. Execute `crontab -e` as your current user and add the following line to your cronjob:
+
+```sh
+12 15 * * 3 API_KEY=bitvavoapikey API_SECRET=bitvavoapisecret /usr/bin/python3 /location/path/to/main.py 
+```
+
+*Note:* Update the `API_KEY`, `API_SECRET` and set the correct path to the main.py script.
+
+**GitLab Scheduled Pipelines**
+
+Or use the [GitLab Scheduling Pipelines](https://docs.gitlab.com/ee/ci/pipelines/schedules.html) to execute the script in intervals (cronjob) on your request.  
 See the [.gitlab-ci.yml](.gitlab-ci.yml) file, which is getting executed using scheduling.
 
-The secrets are passed as environment variables in GitLab pipelines.
+The secrets (`API_KEY` and `API_SECRET`) are passed as environment variables in GitLab pipelines.
+
+**GitHub Actions**
+
+You can also use GitHub Actions. The secrets (`API_KEY` and `API_SECRET`) can be set in GitHub repository secrets.
+
+Add the [trigger-trade.yml](trigger-trade.yml) file to your GitHub forked repository, put this yaml file inside the `.github/workflows` directory.
