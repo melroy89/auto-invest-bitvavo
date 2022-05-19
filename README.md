@@ -10,6 +10,7 @@ Bitvavo auto invest **D**ollar-**C**ost **A**veraging (DCA) Python script.
 - Support buy/sell limit order with user predefined limit price
 - Support buy/sell limit orded based on percentage of *current* market price (eg. limit price = current BTC price * 0.999%)
 - Easily adjust your settings to your needs, settings are at the top of [the script](main.py)
+- Easily setup a crontab or GitLab Pipeline or GitHub Actions
 
 ## Virtual Python Env
 
