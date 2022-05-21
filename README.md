@@ -47,18 +47,9 @@ Start a single buy trade by executing manually: `./main.py`
 
 ### Configure
 
-If you want, change the settings variable at the top of [main.py](main.py) to your needs. Current settings:
+You can adapt the settings in the [config.yml](config.yml) file, **NO** source file changes are needed. Be sure you also set the `API_KEY` and `API_SECRET` environment variables mentioned above.
 
-- `CHECK_AVAILABILITY`: `True`: Check first if minimal available (see: MIN_AVAILABLE_EURO), `False`: Skip available check
-- `MIN_AVAILABLE_EURO`: The minimal available amount in euros before executing any order
-- `ORDER_AMOUNT_EURO`: The amount you want to buy/sell in euros of provided market pair (see next setting)
-- `ORDER_MARKET_PAIR`: The market pair you want to buy/sell automatically (default: `BTC-EUR`, see also [full list of market pairs](https://api.bitvavo.com/v2/markets))
-- `ORDER_SIDE`: Do we want to buy or sell (default: `buy`)
-- `ORDER_LIMIT_SET_FIXED_PRICE`: `True`: Set limit price to predefined price (see: ORDER_LIMIT_PRICE_EURO). `False`: Limit price will be calculated using: current market price x ORDER_LIMIT_PRICE_AS_PERCENTAGE_MARKET_PRICE (default: `False`)
-- `ORDER_LIMIT_PRICE_AS_PERCENTAGE_MARKET_PRICE`: Calculate the limit price based on current market price x percentage (eg. 30000 x 0.999), only used when ORDER_LIMIT_SET_FIXED_PRICE is `False` (default: `0.999`)
-- `ORDER_LIMIT_PRICE_EURO`: The predefined limit price in euros, only used when ORDER_LIMIT_SET_FIXED_PRICE is `True`
-
-* [See the full list of market pairs](https://api.bitvavo.com/v2/markets), for example: `BTC-EUR`, `ETH-EUR` or `ADA-EUR`.
+*Note:* [See the full list of market pairs at Bitvavo](https://api.bitvavo.com/v2/markets), for example: `BTC-EUR`, `ETH-EUR` or `ADA-EUR`.
 
 ### Cronjob
 
@@ -85,4 +76,4 @@ The secrets (`API_KEY` and `API_SECRET`) are passed as environment variables in 
 
 You can also use GitHub Actions. The secrets (`API_KEY` and `API_SECRET`) can be set in GitHub repository secrets.
 
-Add the [trigger-trade.yml](trigger-trade.yml) file to your GitHub forked repository, put this yaml file inside the `.github/workflows` directory.
+Add the [github-action-trigger-trade.yml](github-action-trigger-trade.yml) file to your GitHub forked repository, put this yaml file inside the `.github/workflows` directory.

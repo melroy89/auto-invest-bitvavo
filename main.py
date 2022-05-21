@@ -2,18 +2,18 @@
 from python_bitvavo_api.bitvavo import Bitvavo
 import os
 import sys
+import yaml
+try:
+  config = yaml.safe_load(open('config.yml'))
+except yaml.YAMLError as e:
+  print ('ERROR: Could not load config file / could not parse config file:', e)
+  sys.exit(1)
 
-# General Settings
-CHECK_AVAILABILITY = True # True = Execute the availablity check (see: MIN_AVAILABLE_EURO), False = if you want to execute others _without_ checking the euro balance.
-MIN_AVAILABLE_EURO = 10.0 # Min amount of euro balance in order to proceed futher
-ORDER_AMOUNT_EURO = 5.0 # The order buy (or sell) amount in euros (used for market orders and used as base price for limit orders)
-ORDER_TYPE_MARKET = False # True = Market order (= current price), False = Limit order (see specific limit order settings below)
-ORDER_MARKET_PAIR = 'BTC-EUR' # The trading pair to buy/sell (Bitcoin/euro is the default), full list of markets: https://api.bitvavo.com/v2/markets
-ORDER_SIDE = 'buy' # Buy or sell?
-# Specific limit order settings
-ORDER_LIMIT_SET_FIXED_PRICE = False # True = Set your own predefined limit price (see: ORDER_LIMIT_PRICE_EURO), False = Limit price will be calculated based on: current market price x ORDER_LIMIT_PRICE_AS_PERCENTAGE_MARKET_PRICE (otherwise not used)
-ORDER_LIMIT_PRICE_AS_PERCENTAGE_MARKET_PRICE = 0.999 # We set the limit price to 0.999% of the _current_ market price (eg. current bitcoin price x percentage), only used when ORDER_LIMIT_SET_FIXED_PRICE set to False
-ORDER_LIMIT_PRICE_EURO = 0 # The predefined limit order price in euros, only used when ORDER_LIMIT_SET_FIXED_PRICE is set to True (otherwise not used)
+# Simple config checks
+if 'availability' not in config:
+  print ('ERROR: availability is missing from the config.yml file')
+if 'order_settings' not in config:
+  print ('ERROR: order_settings is missing from the config.yml file')
 
 if 'API_KEY' not in os.environ:
   print('ERROR: Missing \'API_KEY\' environment variable. Exit')
@@ -21,6 +21,17 @@ if 'API_KEY' not in os.environ:
 if 'API_SECRET' not in os.environ:
   print('ERROR: Missing \'API_SECRET\' environment variable. Exit')
   sys.exit(1)
+
+# Configs
+CHECK_AVAILABILITY = config['availability']['check_availability']
+MIN_AVAILABLE_EURO = config['availability']['min_available_euro']
+ORDER_AMOUNT_EURO = config['order_settings']['amount_euro']
+ORDER_TYPE_MARKET = config['order_settings']['type_market']
+ORDER_MARKET_PAIR = config['order_settings']['market_pair']
+ORDER_SIDE = config['order_settings']['side']
+ORDER_LIMIT_SET_FIXED_PRICE = config['order_settings']['limit_set_fixed_price']
+ORDER_LIMIT_PRICE_AS_PERCENTAGE_MARKET_PRICE = config['order_settings']['limit_price_as_percentage_market_price']
+ORDER_LIMIT_PRICE_EURO = config['order_settings']['limit_price_euro']
 
 # Setup connection
 bitvavo = Bitvavo({
