@@ -1,15 +1,15 @@
 # Optional euro availability amount check
 availability:
   check_availability: true # true = Execute the availablity check (see: min_available_euro), false = if you want to execute others _without_ checking the euro balance.
-  min_available_euro: 10.0 # Min amount of euro balance in order to proceed futher
+  min_available_euro: 200.0 # Min amount of euro balance in order to proceed futher
 
 # The crypto order settings
 order_settings:
-  amount_euro: 5.0 # The order buy (or sell) amount in euros (used for market orders and used as base price for limit orders)
+  amount_euro: 200.0 # The order buy (or sell) amount in euros (used for market orders and used as base price for limit orders)
   type_market: false # true = Market order (= current price), false = Limit order (see specific limit order settings below)
   market_pair: 'BTC-EUR' # The trading pair to buy/sell (Bitcoin/euro is the default), full list of markets: https://api.bitvavo.com/v2/markets
   side: 'buy' # 'buy' or 'sell'?
   # Specific limit order settings
   limit_set_fixed_price: false # true = Set your own predefined limit price (see: limit_price_euro), false = Limit price will be calculated based on: current market price x limit_price_as_percentage_market_price (otherwise not used)
-  limit_price_as_percentage_market_price: 0.999 # We set the limit price to 0.999% of the _current_ market price (eg. current bitcoin price x percentage), only used when limit_set_fixed_price set to false
+  limit_price_as_percentage_market_price: 0.998 # We set the limit price to 0.998% of the _current_ market price (eg. current bitcoin price x percentage), only used when limit_set_fixed_price set to false
   limit_price_euro: 0 # Predefined limit order price (only used when limit_set_fixed_price is true)
