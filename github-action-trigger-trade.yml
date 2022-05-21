@@ -2,7 +2,7 @@ name: Run Bitvavo auto-invest
 
 on:
   schedule:
-    # Runs one a week (wednesday) at 15:12
+    # Runs once per week on wednesday at 15:12
     - cron: '12 15 * * 3'
 
 jobs:
