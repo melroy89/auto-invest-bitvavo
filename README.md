@@ -68,7 +68,7 @@ Of course you can add a cronjob using [cron under GNU/Linux](https://en.wikipedi
 ```
 
 *Note:* Update the `API_KEY`, `API_SECRET` and set the correct path to the main.py script.  
-*Note #2:* Do not forget to run `pip install -r requirements.txt` inside this repository as your current user, at least once.
+*Note #2:* Do not forget to run `pip install -r requirements.txt` from inside this repository as your current user, at least once.
 
 **GitLab Scheduled Pipelines**
 
