@@ -5,12 +5,12 @@ Bitvavo auto invest **D**ollar-**C**ost **A**veraging (DCA) Python script.
 ## Features
 
 - Providing orders in euro amount (ideal for DCA'ing)
+- Easily change your configuration by adapting the [config.yml](config.yml) file
 - (Optional) Euro amount availability check before placing orders
 - Support buy/sell market order
 - Support buy/sell limit order with user predefined limit price
 - Support buy/sell limit orded based on percentage of *current* market price (eg. limit price = current BTC price * 0.999%)
-- Easily adjust your settings to your needs, settings are at the top of [the script](main.py)
-- Easily setup a crontab or GitLab Pipeline or GitHub Actions
+- Example setups provided from Crontab, GitLab Pipeline or GitHub Actions
 
 ## Virtual Python Env
 
@@ -47,7 +47,7 @@ Start a single buy trade by executing manually: `./main.py`
 
 ### Configure
 
-You can adapt the settings in the [config.yml](config.yml) file, **NO** source file changes are needed. Be sure you also set the `API_KEY` and `API_SECRET` environment variables mentioned above.
+You can adapt the settings in the [config.yml](config.yml) file which is using YAML syntax, so **NO** source file changes are needed. Be sure you also set the `API_KEY` and `API_SECRET` environment variables mentioned above.
 
 *Note:* [See the full list of market pairs at Bitvavo](https://api.bitvavo.com/v2/markets), for example: `BTC-EUR`, `ETH-EUR` or `ADA-EUR`.
 
