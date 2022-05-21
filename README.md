@@ -28,7 +28,11 @@ source virtual_env/bin/activate
 
 ## Install requirements
 
-Execute:
+Requirements:
+
+- Python3 + pip
+
+Install the pip packages, by executing:
 
 ```sh
 pip install -r requirements.txt
@@ -63,7 +67,8 @@ Of course you can add a cronjob using [cron under GNU/Linux](https://en.wikipedi
 12 15 * * 3 API_KEY=bitvavoapikey API_SECRET=bitvavoapisecret /usr/bin/python3 /location/path/to/main.py 
 ```
 
-*Note:* Update the `API_KEY`, `API_SECRET` and set the correct path to the main.py script.
+*Note:* Update the `API_KEY`, `API_SECRET` and set the correct path to the main.py script.  
+*Note #2:* Do not forget to run `pip install -r requirements.txt` inside this repository as your current user, at least once.
 
 **GitLab Scheduled Pipelines**
 
