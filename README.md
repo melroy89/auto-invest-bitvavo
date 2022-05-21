@@ -57,7 +57,7 @@ You can choice how you want to trigger this script! Built-in Linux Crontab? Usin
 
 **Linux Crontab**
 
-Of course you can add a cronjob using cron under GNU/Linux. Execute `crontab -e` as your current user and add the following line to your cronjob:
+Of course you can add a cronjob using [cron under GNU/Linux](https://en.wikipedia.org/wiki/Cron). Execute `crontab -e` as your current user and add the following line to your cronjob:
 
 ```sh
 12 15 * * 3 API_KEY=bitvavoapikey API_SECRET=bitvavoapisecret /usr/bin/python3 /location/path/to/main.py 
