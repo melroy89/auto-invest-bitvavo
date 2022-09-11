@@ -87,17 +87,20 @@ if __name__ == "__main__":
   if CHECK_AVAILABILITY:
     # Retrieve current euro fiat balance first
     balanceRes = bitvavo.balance({ 'symbol': 'EUR'})
-    if len(balanceRes) >= 1:
-      euroBalance = balanceRes[0]
-      euroAvailable = euroBalance['available']
-      # We want at least x euros available
-      if float(euroAvailable) >= MIN_AVAILABLE_EURO:
-        # Start buying/selling
-        placeMarketOrder()
-      else:
-        print('WARNING: Not enough balance (minimum amount should be ' + str(MIN_AVAILABLE_EURO) + ' euros).')
+    if 'error' in balanceRes:
+      print ('Error: ' + balanceRes['error'])
     else:
-      print('ERROR: Could not retrieve euro balance!?')
+      if len(balanceRes) >= 1:
+        euroBalance = balanceRes[0]
+        euroAvailable = euroBalance['available']
+        # We want at least x euros available
+        if float(euroAvailable) >= MIN_AVAILABLE_EURO:
+          # Start buying/selling
+          placeMarketOrder()
+        else:
+          print('WARNING: Not enough balance (minimum amount should be ' + str(MIN_AVAILABLE_EURO) + ' euros).')
+      else:
+        print('ERROR: Could not retrieve euro balance!?')
   else:
     # Start buying/selling
     placeMarketOrder()
